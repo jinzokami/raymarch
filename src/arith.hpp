@@ -15,9 +15,24 @@ vec3 operator-(vec3 lhs, vec3 rhs)
     return {lhs.x-rhs.x, lhs.y-rhs.y, lhs.z-rhs.z};
 }
 
+float norm(vec2 v)
+{
+    return sqrt(v.x*v.x + v.y*v.y);
+}
+
 float norm(vec3 v)
 {
     return sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+}
+
+float dot(vec3 v, vec3 u)
+{
+    return v.x*u.x + v.y*u.y + v.z*u.z;
+}
+
+float dot(vec2 v, vec2 u)
+{
+    return v.x*u.x + v.y*u.y;
 }
 
 vec3 max(vec3 v, float s)
@@ -44,3 +59,4 @@ vec3 abs(vec3 v)
 {
     return {abs(v.x), abs(v.y), abs(v.z)};
 }
+

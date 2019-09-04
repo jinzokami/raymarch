@@ -21,6 +21,16 @@ namespace sdf
 
     float torus(vec3 p, vec2 t)
     {
-        
+        vec2 pxz = {p.x, p.z};
+        vec2 q = {norm(pxz) - t.x, p.y};
+        return norm(q) - t.y;
+    }
+
+    float capped_torus(vec3 p, vec2 sc, float ra, float rb)
+    {
+        vec2 pxy = {p.x, p.y};
+        p.x = abs(p.x);
+        float k = (sc.y*p.x>sc.x*p.y) ? dot(pxy, sc) : norm(pxy);
+        return sqrt(dot(p, p) + ra*ra - 2.0*ra*k) - rb;
     }
 };
