@@ -23,6 +23,8 @@ int main(int argc, char** argv)
     stbi_write_bmp("out.bmp", width, height, 3, pixels);
 
     free(pixels);
+
+    printf("complete.");
     
     return 0;
 }

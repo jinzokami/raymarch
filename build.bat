@@ -1,0 +1,1 @@
+g++ -I include -L lib src/main.cpp src/SDF.cpp -o out.exe
