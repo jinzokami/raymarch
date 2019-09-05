@@ -7,10 +7,39 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
+#include "arith.hpp"
+
+const float EPSILON = 1.0f;
+
 struct pixel
 {
     unsigned char r, g, b;
 };
+
+float sdf_scene(vec3 ray)
+{
+
+}
+
+float raymarch(vec3 eye, vec3 viewRayDirection, float start, float end)
+{
+    float depth = start;
+    for (int i = 0; i < 10; i++)
+    {
+        float dist = sdf_scene(eye + depth * viewRayDirection);
+        if (dist < EPSILON)
+        {
+            return depth;
+        }
+
+        depth += dist;
+
+        if (depth >= end)
+        {
+            return end;
+        }
+    }
+}
 
 int main(int argc, char** argv)
 {
@@ -23,7 +52,8 @@ int main(int argc, char** argv)
     {
         for (int y = 0; y < height; y++)
         {
-            pixels[(y * width + (x % width))] = {x, 0, 255-x};
+            pixels[(y * width + (x % width))] = {x^y, 0, (255-x)^(255-y)};
+            
         }
     }
 
