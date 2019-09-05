@@ -8,10 +8,10 @@
 
 int main(int argc, char** argv)
 {
-    const unsigned int width = atoi(argv[1]);
-    const unsigned int height = atoi(argv[2]);
+    const unsigned int width = 256;//atoi(argv[1]);
+    const unsigned int height = 256;//atoi(argv[2]);
 
-    char* pixels = (char*)malloc(sizeof(char)*3*width*height);
+    unsigned char* pixels = (unsigned char*)malloc(sizeof(char)*3*width*height);
 
     for (int i = 0; i < 3*width*height; i+=3)
     {
