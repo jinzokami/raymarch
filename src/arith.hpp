@@ -1,4 +1,8 @@
+#pragma once
+
 #include "math.h"
+
+const float PI = 3.14159265;
 
 struct vec2
 {
@@ -60,6 +64,18 @@ float norm(vec3 v)
     return sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
 }
 
+vec2 normalize(vec2 v)
+{
+    float n = norm(v);
+    return {v.x/n, v.y/n};
+}
+
+vec3 normalize(vec3 v)
+{
+    float n = norm(v);
+    return {v.x/n, v.y/n, v.z/n};
+}
+
 float dot(vec3 v, vec3 u)
 {
     return v.x*u.x + v.y*u.y + v.z*u.z;
@@ -95,3 +111,7 @@ vec3 abs(vec3 v)
     return {abs(v.x), abs(v.y), abs(v.z)};
 }
 
+float radians(float degrees)
+{
+    return degrees/2*PI;
+}
